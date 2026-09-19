@@ -1,0 +1,24 @@
+{
+  "$schema": "https://opencode.ai/config.json",
+  "model": "deepseek/deepseek-chat",
+  "update": "disable",
+  "mcp": {
+    "servers": {
+      "t-invest": {
+        "type": "remote",
+        "url": "https://invest-public-api.tbank.ru/mcp",
+        "oauth": false,
+        "headers": {
+          "Authorization": "Bearer {env:TINVEST_MCP_TOKEN}"
+        }
+      }
+    }
+  },
+  "providers": {
+    "deepseek": {
+      "settings": {
+        "apiKey": "{env:DEEPSEEK_API_KEY}"
+      }
+    }
+  }
+}
