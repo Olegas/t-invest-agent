@@ -115,7 +115,7 @@ pick one and stay consistent.
 **Base image.** `ghcr.io/anomalyco/opencode:2.0.0` is Alpine-based and already
 contains the opencode v2 binary, `ripgrep`, `wget`, and a CA bundle. It runs as
 `root` with `HOME=/root`, and has no `bash`, `git`, or `curl`. The Dockerfile adds
-`bash`, `ca-certificates` (for `update-ca-certificates`), `curl`, and `git`.
+`bash`, `ca-certificates` (for `update-ca-certificates`), `curl`, `git`, and `python3` (with `pip`).
 
 **Server.** `entrypoint.sh` runs `opencode serve --hostname 0.0.0.0 --port 4444`.
 opencode's foreground server uses its **working directory** as the default

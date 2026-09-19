@@ -8,15 +8,20 @@ RUN apk add --no-cache \
       bash \
       ca-certificates \
       curl \
-      git
+      git \
+      py3-pip \
+      python3
 
 # Russian Trusted Root/Sub CA. The T-Bank Invest MCP endpoint
 # (invest-public-api.tbank.ru) is signed by these roots, which are not in the
 # default Mozilla bundle, so TLS otherwise fails with
 # "self signed certificate in certificate chain".
-RUN curl -fsSL https://gu-st.ru/content/lending/russian_trusted_root_ca_pem.crt \
+# gu-st.ru is intermittently unreachable, so retry the downloads.
+RUN curl -fsSL --retry 5 --retry-delay 2 --retry-all-errors \
+      https://gu-st.ru/content/lending/russian_trusted_root_ca_pem.crt \
       -o /usr/local/share/ca-certificates/russian_trusted_root_ca_pem.crt \
- && curl -fsSL https://gu-st.ru/content/lending/russian_trusted_sub_ca_pem.crt \
+ && curl -fsSL --retry 5 --retry-delay 2 --retry-all-errors \
+      https://gu-st.ru/content/lending/russian_trusted_sub_ca_pem.crt \
       -o /usr/local/share/ca-certificates/russian_trusted_sub_ca_pem.crt \
  && update-ca-certificates
 
