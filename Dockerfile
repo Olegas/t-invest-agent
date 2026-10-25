@@ -1,4 +1,4 @@
-FROM ghcr.io/anomalyco/opencode:2.0.0
+FROM ghcr.io/anomalyco/opencode:2.1.4
 
 # The upstream image is Alpine-based and already ships opencode v2, ripgrep,
 # wget and a Mozilla CA bundle. Add the few tools this project relies on.

@@ -1,7 +1,10 @@
 {
   "$schema": "https://opencode.ai/config.json",
-  "model": "deepseek/deepseek-chat",
+  "model": "deepseek/deepseek-flash",
   "update": "disable",
+  "websearch": {
+    "provider": "firecrawl"
+  },
   "mcp": {
     "servers": {
       "t-invest": {
